@@ -1,5 +1,7 @@
 package com.example;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,19 +13,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainController {
 
-    @Autowired
-    private UserStorageService userStorageService;
-    @Autowired
-    private ValidationService validationService;
+    private final UserStorageService userStorageService;
+    private final ValidationService validationService;
+    private final LoginAuditService loginAuditService;
     private static final String MAIN_VIEW = "index";
     private static final String SUCCESSFULLY_LOGIN = "successfully_login";
     private static final String REGISTRATION = "registration";
     private static final String SUCCESSFULLY_REGISTERED = "successfully_registered";
+    private static final String AUDIT = "audit";
     private boolean isUserExist = true;
     private boolean isPasswordCorrect = true;
     private boolean didTryToUseAdminName = false;
     private boolean didTryToUseExistName = false;
     private String lastName = "";
+
+    @Autowired
+    public MainController(UserStorageService userStorageService, ValidationService validationService,
+            LoginAuditService loginAuditService) {
+        this.userStorageService = userStorageService;
+        this.validationService = validationService;
+        this.loginAuditService = loginAuditService;
+    }
 
     @GetMapping("/")
     public String login(Model model) {
@@ -47,6 +57,15 @@ public class MainController {
             isUserExist = userStorageService.isUserExist(user);
             isPasswordCorrect = userStorageService.isPasswordCorrect(user);
             setAttributesForLogin(model);
+            StringBuilder error = new StringBuilder();
+            if (!isUserExist) {
+                error.append(" User now exist.");
+            }
+            if (!isPasswordCorrect) {
+                error.append(" Password is incorrect.");
+            }
+            loginAuditService.addLogs(Instant.now(), user, isUserExist && isPasswordCorrect,
+                    error.toString());
             if (isUserExist && isPasswordCorrect) {
                 return SUCCESSFULLY_LOGIN;
             }
@@ -87,6 +106,12 @@ public class MainController {
                 break;
         }
         return REGISTRATION;
+    }
+
+    @GetMapping("/audit")
+    public String audit(Model model) {
+        model.addAttribute("audit", loginAuditService.getLogs());
+        return AUDIT;
     }
 
     private void setAttributesForRegistration(Model model) {
