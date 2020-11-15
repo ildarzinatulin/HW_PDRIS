@@ -52,10 +52,11 @@ public class WeatherService {
 
     private Weather getTomorrowWeatherByResponse(ResponseEntity<String> response) throws JsonProcessingException {
         JsonNode root = mapper.readTree(response.getBody());
+        String city = root.findValue("name").asText();
         root = root.findValue("forecastday").get(1);
         return new Weather(
                 root.findValue("date").asText(),
-                root.findValue("name").asText(),
+                city,
                 root.findValue("maxtemp_c").asDouble(),
                 root.findValue("mintemp_c").asDouble(),
                 root.findValue("avgtemp_c").asDouble(),
