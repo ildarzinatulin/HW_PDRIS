@@ -9,11 +9,13 @@
 <h1>Login</h1>
 
 <c:if test="${requestScope.isUserExist eq false}">
-    <div>ERROR: User ${requestScope.lastName} not exist.</div>
+    <div>ERROR: User ${requestScope.lastUserName} not exist.</div>
 </c:if>
 
-<c:if test="${requestScope.isPasswordCorrect eq false}">
-    <div>ERROR: Password isn't correct.</div>
+<c:if test="${requestScope.isUserExist eq true}">
+    <c:if test="${requestScope.isPasswordCorrect eq false}">
+        <div>ERROR: Password isn't correct.</div>
+    </c:if>
 </c:if>
 
 <form method="post" action="">
