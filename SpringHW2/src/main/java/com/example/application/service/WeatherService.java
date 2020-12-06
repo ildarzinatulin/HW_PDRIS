@@ -8,6 +8,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -31,12 +34,17 @@ public class WeatherService {
     private String apiKey;
     private String urlForPrediction;
     private final DateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
+    private final RestTemplate restTemplate;
     private final WeatherRepository weatherRepository;
+    private final Logger logger = Logger.getLogger(Weather.class.getName());
 
     @Autowired
-    public WeatherService(WeatherRepository weatherRepository) {
+    public WeatherService(WeatherRepository weatherRepository, ObjectMapper mapper,
+            RestTemplateBuilder restTemplateBuilder) {
         this.weatherRepository = weatherRepository;
+        this.mapper = mapper;
+        this.restTemplate = restTemplateBuilder.build();
     }
 
     @PostConstruct
@@ -45,26 +53,8 @@ public class WeatherService {
     }
 
     public Weather getWeatherPrediction() throws JsonProcessingException {
-        RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(urlForPrediction, String.class);
         return getTomorrowWeatherByResponse(response);
-    }
-
-    private Weather getTomorrowWeatherByResponse(ResponseEntity<String> response) throws JsonProcessingException {
-        JsonNode root = mapper.readTree(response.getBody());
-        String city = root.findValue("name").asText();
-        root = root.findValue("forecastday").get(1);
-        return new Weather(
-                root.findValue("date").asText(),
-                city,
-                root.findValue("maxtemp_c").asDouble(),
-                root.findValue("mintemp_c").asDouble(),
-                root.findValue("avgtemp_c").asDouble(),
-                root.findValue("maxwind_kph").asDouble(),
-                root.findValue("totalprecip_mm").asDouble(),
-                root.findValue("avgvis_km").asDouble(),
-                root.findValue("avghumidity").asDouble()
-        );
     }
 
     public List<Weather> getWeatherForLastDays(int numberOfDays) {
@@ -90,6 +80,7 @@ public class WeatherService {
         try {
             return getWeatherByResponse(response);
         } catch (JsonProcessingException e) {
+            logger.log(Level.ALL, "Problem with parsing weather response: ", e);
             return null;
         }
     }
@@ -110,17 +101,47 @@ public class WeatherService {
     private Weather getWeatherByResponse(ResponseEntity<String> response) throws JsonProcessingException {
         JsonNode root = mapper.readTree(response.getBody());
         Weather weather = new Weather(
-                root.findValue("date").asText(),
-                root.findValue("name").asText(),
-                root.findValue("maxtemp_c").asDouble(),
-                root.findValue("mintemp_c").asDouble(),
-                root.findValue("avgtemp_c").asDouble(),
-                root.findValue("maxwind_kph").asDouble(),
-                root.findValue("totalprecip_mm").asDouble(),
-                root.findValue("avgvis_km").asDouble(),
-                root.findValue("avghumidity").asDouble()
+                root.findValue(ResponseKeys.DATE).asText(),
+                root.findValue(ResponseKeys.NAME).asText(),
+                root.findValue(ResponseKeys.MAXIMUM_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.MINIMUM_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.MAXIMUM_WIND_SPEED).asDouble(),
+                root.findValue(ResponseKeys.TOTAL_PRECIPITATE).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_HUMIDITY).asDouble()
         );
         weatherRepository.save(weather);
         return weather;
+    }
+
+    private Weather getTomorrowWeatherByResponse(ResponseEntity<String> response) throws JsonProcessingException {
+        JsonNode root = mapper.readTree(response.getBody());
+        String city = root.findValue(ResponseKeys.NAME).asText();
+        root = root.findValue(ResponseKeys.FORECAST).get(1);
+        return new Weather(
+                root.findValue(ResponseKeys.DATE).asText(),
+                city,
+                root.findValue(ResponseKeys.MAXIMUM_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.MINIMUM_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_TEMPERATURE).asDouble(),
+                root.findValue(ResponseKeys.MAXIMUM_WIND_SPEED).asDouble(),
+                root.findValue(ResponseKeys.TOTAL_PRECIPITATE).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble(),
+                root.findValue(ResponseKeys.AVERAGE_HUMIDITY).asDouble()
+        );
+    }
+
+    private static class ResponseKeys {
+        private static final String DATE = "date";
+        private static final String NAME = "name";
+        private static final String MAXIMUM_TEMPERATURE = "maxtemp_c";
+        private static final String MINIMUM_TEMPERATURE = "mintemp_c";
+        private static final String AVERAGE_TEMPERATURE = "avgtemp_c";
+        private static final String MAXIMUM_WIND_SPEED = "maxwind_kph";
+        private static final String TOTAL_PRECIPITATE = "totalprecip_mm";
+        private static final String AVERAGE_VISIBILITY = "avgvis_km";
+        private static final String AVERAGE_HUMIDITY = "avghumidity";
+        private static final String FORECAST = "forecastday";
     }
 }

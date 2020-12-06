@@ -19,11 +19,7 @@ public class CurrencyController {
     }
 
     @GetMapping("/currency")
-    public List<Currency> getWeatherForLastDays(@RequestParam(required = false) Integer days) {
-        int numberOfDays = 1;
-        if (days != null) {
-            numberOfDays = days;
-        }
-        return currencyService.getDollarCurrencyForLastDays(numberOfDays);
+    public List<Currency> getWeatherForLastDays(@RequestParam(required = false, defaultValue = "1") Integer days) {
+        return currencyService.getDollarCurrencyForLastDays(days);
     }
 }

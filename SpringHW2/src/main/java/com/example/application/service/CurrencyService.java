@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 import com.example.application.domain.Currency;
 import com.example.application.repository.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,10 +21,21 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class CurrencyService {
     private final CurrencyRepository currencyRepository;
+    private final RestTemplate restTemplate;
+
+    private final static String URL_FOR_CURRENCY_REQUEST = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
+    private final static String END_OF_RESPONSE_PATTERN = "</Value></Valute>";
+    private final static String CURRENCY_RESPONSE_START_PATTERN = "<Valute ID=\"R01235\">"
+            + "<NumCode>840</NumCode>"
+            + "<CharCode>USD</CharCode>"
+            + "<Nominal>1</Nominal>"
+            + "<Name>Доллар США</Name>"
+            + "<Value>";
 
     @Autowired
-    public CurrencyService(CurrencyRepository currencyRepository) {
+    public CurrencyService(CurrencyRepository currencyRepository, RestTemplateBuilder builder) {
         this.currencyRepository = currencyRepository;
+        this.restTemplate = builder.build();
     }
 
     public List<Currency> getDollarCurrencyForLastDays(int numberOfDays) {
@@ -44,7 +56,7 @@ public class CurrencyService {
         if (currency.isPresent()) {
             return currency.get();
         }
-        RestTemplate restTemplate = new RestTemplate();
+
         ResponseEntity<String> response = restTemplate.getForEntity(createUrlForInstant(date), String.class);
         return getCurrencyByResponse(response, stringDate);
     }
@@ -59,20 +71,15 @@ public class CurrencyService {
     private double getCurrencyValueByResponse(ResponseEntity<String> response) {
         String body = response.getBody();
         System.out.println(body);
-        String startPattern = "<Valute ID=\"R01235\">"
-                + "<NumCode>840</NumCode>"
-                + "<CharCode>USD</CharCode>"
-                + "<Nominal>1</Nominal>"
-                + "<Name>Доллар США</Name>"
-                + "<Value>";
-        int valueStartIndex = body.indexOf(startPattern) + startPattern.length();
+        assert body != null;
+        int valueStartIndex = body.indexOf(CURRENCY_RESPONSE_START_PATTERN) + CURRENCY_RESPONSE_START_PATTERN.length();
         body = body.substring(valueStartIndex);
-        int valueEndIndex = body.indexOf("</Value></Valute>");
+        int valueEndIndex = body.indexOf(END_OF_RESPONSE_PATTERN);
         return Double.parseDouble(body.substring(0, valueEndIndex).replace(",", "."));
     }
 
     private String createUrlForInstant(Instant time) {
         DateFormat dateFormatDay = new SimpleDateFormat("dd/MM/yyyy");
-        return "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + dateFormatDay.format(Date.from(time));
+        return URL_FOR_CURRENCY_REQUEST + dateFormatDay.format(Date.from(time));
     }
 }

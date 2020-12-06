@@ -15,7 +15,7 @@ public class PredictCurrencyService {
     private final SimpleRegression regression;
     private final WeatherService weatherService;
     private final CurrencyService currencyService;
-    private boolean wasFit = false;
+
     private static final int NUMBER_PREVIOUS_DAYS_FOR_FIT = 7;
 
     @Autowired
@@ -30,7 +30,6 @@ public class PredictCurrencyService {
         List<Weather> weathers = weatherService.getWeatherForLastDays(NUMBER_PREVIOUS_DAYS_FOR_FIT);
         List<Currency> currencies = currencyService.getDollarCurrencyForLastDays(NUMBER_PREVIOUS_DAYS_FOR_FIT);
         fit(weathers, currencies);
-        wasFit = true;
     }
 
     public void fit(List<Weather> weathers, List<Currency> currencies) {
@@ -38,20 +37,13 @@ public class PredictCurrencyService {
                 .forEach(i -> {
                     regression.addData(weathers.get(i).getAvgTemperature(), currencies.get(i).getValue());
                 });
-        wasFit = true;
     }
 
     public double predict(Weather weather) {
-        if (!wasFit) {
-            fit();
-        }
         return regression.predict(weather.getMaxTemperature());
     }
 
     public double predict() throws JsonProcessingException {
-        if (!wasFit) {
-            fit();
-        }
         Weather weather = weatherService.getWeatherPrediction();
         return regression.predict(weather.getMaxTemperature());
     }
