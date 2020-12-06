@@ -16,16 +16,12 @@ public class MainController {
     private final UserStorageService userStorageService;
     private final ValidationService validationService;
     private final LoginAuditService loginAuditService;
+
     private static final String MAIN_VIEW = "index";
     private static final String SUCCESSFULLY_LOGIN = "successfully_login";
     private static final String REGISTRATION = "registration";
     private static final String SUCCESSFULLY_REGISTERED = "successfully_registered";
     private static final String AUDIT = "audit";
-    private boolean isUserExist = true;
-    private boolean isPasswordCorrect = true;
-    private boolean didTryToUseAdminName = false;
-    private boolean didTryToUseExistName = false;
-    private String lastName = "";
 
     @Autowired
     public MainController(UserStorageService userStorageService, ValidationService validationService,
@@ -36,33 +32,29 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String login(Model model) {
-        setAttributesForLogin(model);
-        isUserExist = true;
-        isPasswordCorrect = true;
-
+    public String login() {
         return MAIN_VIEW;
     }
 
-    private void setAttributesForLogin(Model model) {
+    private void setAttributesForLogin(Model model, boolean isUserExist, boolean isPasswordCorrect,
+            String lastUserName) {
         model.addAttribute("isUserExist", isUserExist);
         model.addAttribute("isPasswordCorrect", isPasswordCorrect);
-        model.addAttribute("lastName", lastName);
+        model.addAttribute("lastUserName", lastUserName);
     }
 
     @PostMapping("/")
     public String login(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
-        lastName = user.getName();
         if (!bindingResult.hasErrors()) {
-            isUserExist = userStorageService.isUserExist(user);
-            isPasswordCorrect = userStorageService.isPasswordCorrect(user);
-            setAttributesForLogin(model);
+            boolean isUserExist = userStorageService.isUserExist(user);
+            boolean isPasswordCorrect = userStorageService.isPasswordCorrect(user);
+            setAttributesForLogin(model, isUserExist, isPasswordCorrect, user.getName());
             StringBuilder error = new StringBuilder();
             if (!isUserExist) {
-                error.append(" User now exist.");
+                error.append(" User now exist. ");
             }
             if (!isPasswordCorrect) {
-                error.append(" Password is incorrect.");
+                error.append(" Password is incorrect. ");
             }
             loginAuditService.addLogs(Instant.now(), user, isUserExist && isPasswordCorrect,
                     error.toString());
@@ -74,8 +66,7 @@ public class MainController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model) {
-        setAttributesForRegistration(model);
+    public String registration() {
         return REGISTRATION;
     }
 
@@ -84,25 +75,14 @@ public class MainController {
         ValidationService.Status status = validationService.validate(user);
         switch (status) {
             case OK:
-                didTryToUseAdminName = false;
-                didTryToUseExistName = false;
-                isUserExist = true;
-                isPasswordCorrect = true;
                 userStorageService.add(user);
+                setAttributesForRegistration(model, false, false);
                 return SUCCESSFULLY_REGISTERED;
             case USER_ALREADY_EXIST:
-                didTryToUseAdminName = false;
-                didTryToUseExistName = true;
-                isUserExist = true;
-                isPasswordCorrect = true;
-                setAttributesForRegistration(model);
+                setAttributesForRegistration(model, false, true);
                 break;
             case TRY_TO_USE_ADMIN_NAME:
-                didTryToUseAdminName = true;
-                didTryToUseExistName = false;
-                isUserExist = true;
-                isPasswordCorrect = true;
-                setAttributesForRegistration(model);
+                setAttributesForRegistration(model, true, false);
                 break;
         }
         return REGISTRATION;
@@ -114,7 +94,7 @@ public class MainController {
         return AUDIT;
     }
 
-    private void setAttributesForRegistration(Model model) {
+    private void setAttributesForRegistration(Model model, boolean didTryToUseAdminName, boolean didTryToUseExistName) {
         model.addAttribute("didTryToUseAdminName", didTryToUseAdminName);
         model.addAttribute("didTryToUseExistName", didTryToUseExistName);
     }
