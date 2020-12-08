@@ -18,6 +18,16 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking big\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].value).to.lessThan(100.0);",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking small\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].value).to.greaterThan(50.0)",
 									"});"
 								],
 								"type": "text/javascript"
@@ -43,22 +53,98 @@
 				},
 				{
 					"name": "currency_for_few_days",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "252c09b4-b10e-4399-887b-94063b55d569",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking big\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    for (let i = 0; i < 10; i++) {",
+									"        pm.expect(jsonData[i].value).to.lessThan(100.0);",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking small\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    for (let i = 0; i < 10; i++) {",
+									"        pm.expect(jsonData[i].value).to.greaterThan(50.0)",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/currency?days=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"currency"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "10"
+								}
+							]
 						}
 					},
 					"response": []
 				},
 				{
 					"name": "currency_request_with_bad_params",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6347dd5e-8778-4d80-9190-54e0a8937332",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is empty\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(0)",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/currency?days=-5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"currency"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "-5"
+								}
+							]
 						}
 					},
 					"response": []
@@ -71,33 +157,152 @@
 			"item": [
 				{
 					"name": "ordinary_weather_request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3ffca76-8bbf-4269-a004-fb79a76e8657",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"City is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].city).to.eql(\"Moscow\");",
+									"",
+									"});",
+									"",
+									"pm.test(\"Temperature is realistically\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].maxTemperature).to.lessThan(50);",
+									"    pm.expect(jsonData[0].minTemperature).to.greaterThan(-50);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/weather",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"weather"
+							]
 						}
 					},
 					"response": []
 				},
 				{
 					"name": "weather_request_for_last_few_days",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed867de0-213e-4f45-a095-431dfa24090e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"City is correct\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].city).to.eql(\"London\");",
+									"",
+									"});",
+									"",
+									"pm.test(\"Temperature is realistically\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    for (let i = 0; i < 5; i++) {",
+									"        pm.expect(jsonData[i].maxTemperature).to.lessThan(50);",
+									"        pm.expect(jsonData[i].minTemperature).to.greaterThan(-50);",
+									"    }",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/weather?city=London&days=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"weather"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "London"
+								},
+								{
+									"key": "days",
+									"value": "5"
+								}
+							]
 						}
 					},
 					"response": []
 				},
 				{
 					"name": "weather_request_with_bad_params",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16410037-553a-4bce-b40d-8a79956e8971",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is empty\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.eql(0)",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/weather?city=sdvr&days=-5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"weather"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "sdvr"
+								},
+								{
+									"key": "days",
+									"value": "-5"
+								}
+							]
 						}
 					},
 					"response": []
@@ -110,11 +315,43 @@
 			"item": [
 				{
 					"name": "ordinary_currency_prediction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a44fb11-9e6e-440b-9fdd-7836997fe2e1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking big\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.lessThan(100.0);",
+									"});",
+									"",
+									"pm.test(\"Currency isn't so fucking small\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.greaterThan(50.0)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/predict-currency",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"predict-currency"
+							]
 						}
 					},
 					"response": []

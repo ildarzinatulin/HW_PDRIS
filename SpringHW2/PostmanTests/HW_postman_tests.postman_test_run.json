@@ -1,0 +1,307 @@
+{
+	"id": "2ac32bb8-ae7e-480f-bf95-280cb1831681",
+	"name": "HW_postman_tests",
+	"timestamp": "2020-12-08T19:22:04.247Z",
+	"collection_id": "10337414-e5f0-44e9-9959-cc47a15ddc33",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 19,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "961ca686-49bc-4afe-8356-0068cb31bc7f",
+			"name": "ordinary_currency_request",
+			"url": "http://localhost:8080/currency",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Currency isn't so fucking big": true,
+				"Currency isn't so fucking small": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking big": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking small": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Currency isn't so fucking big": true,
+					"Currency isn't so fucking small": true
+				}
+			]
+		},
+		{
+			"id": "5689ab3f-f56e-4bc1-a148-eb54c305c150",
+			"name": "currency_for_few_days",
+			"url": "http://localhost:8080/currency?days=10",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Currency isn't so fucking big": true,
+				"Currency isn't so fucking small": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking big": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking small": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Currency isn't so fucking big": true,
+					"Currency isn't so fucking small": true
+				}
+			]
+		},
+		{
+			"id": "40c38830-50fe-4fd0-93c9-f63227c57607",
+			"name": "currency_request_with_bad_params",
+			"url": "http://localhost:8080/currency?days=-5",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response is empty": true
+				}
+			]
+		},
+		{
+			"id": "1869b53d-0ff2-4002-b1c3-7ed706560d0e",
+			"name": "ordinary_weather_request",
+			"url": "http://localhost:8080/weather",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"City is correct": true,
+				"Temperature is realistically": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"City is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Temperature is realistically": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"City is correct": true,
+					"Temperature is realistically": true
+				}
+			]
+		},
+		{
+			"id": "5e14973d-d0b8-4c04-8ca7-44aabe36cf5b",
+			"name": "weather_request_for_last_few_days",
+			"url": "http://localhost:8080/weather?city=London&days=5",
+			"time": 1192,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"City is correct": true,
+				"Temperature is realistically": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"City is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Temperature is realistically": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1192
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"City is correct": true,
+					"Temperature is realistically": true
+				}
+			]
+		},
+		{
+			"id": "676a90ff-a327-4d40-910c-1d47091762f6",
+			"name": "weather_request_with_bad_params",
+			"url": "http://localhost:8080/weather?city=sdvr&days=-5",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response is empty": true
+				}
+			]
+		},
+		{
+			"id": "f9332ac7-9356-474f-a083-606f661c6480",
+			"name": "ordinary_currency_prediction",
+			"url": "http://localhost:8080/predict-currency",
+			"time": 294,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Currency isn't so fucking big": true,
+				"Currency isn't so fucking small": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking big": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Currency isn't so fucking small": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				294
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Currency isn't so fucking big": true,
+					"Currency isn't so fucking small": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1515,
+	"collection": {
+		"requests": [
+			{
+				"id": "961ca686-49bc-4afe-8356-0068cb31bc7f",
+				"method": "GET"
+			},
+			{
+				"id": "5689ab3f-f56e-4bc1-a148-eb54c305c150",
+				"method": "GET"
+			},
+			{
+				"id": "40c38830-50fe-4fd0-93c9-f63227c57607",
+				"method": "GET"
+			},
+			{
+				"id": "1869b53d-0ff2-4002-b1c3-7ed706560d0e",
+				"method": "GET"
+			},
+			{
+				"id": "5e14973d-d0b8-4c04-8ca7-44aabe36cf5b",
+				"method": "GET"
+			},
+			{
+				"id": "676a90ff-a327-4d40-910c-1d47091762f6",
+				"method": "GET"
+			},
+			{
+				"id": "f9332ac7-9356-474f-a083-606f661c6480",
+				"method": "GET"
+			}
+		]
+	}
+}
