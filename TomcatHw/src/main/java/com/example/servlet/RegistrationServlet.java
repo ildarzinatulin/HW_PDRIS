@@ -1,6 +1,8 @@
 package com.example.servlet;
 
 import com.example.model.User;
+import com.example.service.UserStorageService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,61 +10,49 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegistrationServlet extends HttpServlet {
 
-    private final static String index = "/WEB-INF/view/registration.jsp";
-    private static Map<String,User> users;
-    private boolean didTryToUseAdminName = false;
-    private boolean didTryToUseExistName = false;
+    private final static String INDEX = "/WEB-INF/view/registration.jsp";
+
+    private UserStorageService userStorageService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("didTryToUseAdminName", didTryToUseAdminName);
-        req.setAttribute("didTryToUseExistName", didTryToUseExistName);
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.getRequestDispatcher(INDEX).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF8");
         HttpSession session = req.getSession();
-        users = (Map<String, User>) session.getAttribute("users");
-        if (users == null) {
-            users = new HashMap<>();
-            session.setAttribute("users", users);
+        userStorageService = (UserStorageService) session.getAttribute("userStorageService");
+        if (userStorageService == null) {
+            userStorageService = new UserStorageService();
+            session.setAttribute("userStorageService", userStorageService);
         }
-        if (!requestIsValid(req)) {
+
+        User user = new User(req.getParameter("username"), req.getParameter("password"));
+        if (!validateAuthorisationData(user, req)) {
             doGet(req, resp);
         } else {
-            final String name = req.getParameter("username");
-            final String password = req.getParameter("password");
-            final User user = new User(name, password);
-            users.put(user.getName(), user);
-            if (!didTryToUseExistName && !didTryToUseAdminName) {
-                resp.sendRedirect("/successfullyRegistered");
-            } else {
-                doGet(req, resp);
-            }
+            userStorageService.add(user);
+            resp.sendRedirect("/successfullyRegistered");
         }
     }
 
-    private boolean requestIsValid(final HttpServletRequest req) {
-        final String name = req.getParameter("username");
-
-        if (name.equals("admin")) {
-            didTryToUseAdminName = true;
-            didTryToUseExistName = false;
+    private boolean validateAuthorisationData(final User user, HttpServletRequest req) {
+        if (user.getName().equals("admin")) {
+            req.setAttribute("didTryToUseAdminName", true);
+            req.setAttribute("didTryToUseExistName", false);
             return false;
         }
-        didTryToUseAdminName = false;
-        if (users.containsKey(name)) {
-            didTryToUseExistName = true;
+        if (userStorageService.isUserExist(user)) {
+            req.setAttribute("didTryToUseAdminName", false);
+            req.setAttribute("didTryToUseExistName", true);
             return false;
         }
-        didTryToUseExistName = false;
+        req.setAttribute("didTryToUseAdminName", false);
+        req.setAttribute("didTryToUseExistName", false);
         return true;
     }
 }
