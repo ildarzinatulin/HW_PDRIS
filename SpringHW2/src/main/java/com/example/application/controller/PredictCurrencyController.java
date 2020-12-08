@@ -17,6 +17,7 @@ public class PredictCurrencyController {
 
     @GetMapping("/predict-currency")
     public double getWeatherForLastDays() throws JsonProcessingException {
+        predictCurrencyService.fit();
         return predictCurrencyService.predict();
     }
 }
