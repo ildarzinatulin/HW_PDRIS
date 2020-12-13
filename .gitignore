@@ -3,3 +3,6 @@
 */target/
 */apache-tomcat-9.0.39/
 *.DS_Store
+/target/*
+target
+/target
