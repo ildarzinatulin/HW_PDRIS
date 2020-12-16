@@ -23,16 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af6b373c-d036-40b4-9607-8de86f5969e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/controller/CurrencyControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/controller/PredictCurrencyControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/controller/WeatherControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e5699abab8ca78839f8d0a6495b4a3d3a829d72" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e5699abab8ca78839f8d0a6495b4a3d3a829d72" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/domain/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/domain/Weather.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/service/CurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/service/CurrencyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/service/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/service/WeatherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/application/domain/WeatherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/application/domain/WeatherTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/domain/WeatherIdTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,15 +76,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.example.application.controller" />
       <recent name="com.example.application.domain" />
+      <recent name="com.example.application.controller" />
       <recent name="com.example.application.service" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WeatherControllerTest">
+  <component name="RunManager" selected="JUnit.WeatherIdTest">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -115,22 +107,6 @@
       <option name="PACKAGE_NAME" value="com.example.application.controller" />
       <option name="MAIN_CLASS_NAME" value="com.example.application.controller.CurrencyControllerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CurrencyControllerTest.getWeatherForLastDays" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HW_PDRIS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.application.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.application.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.example.application.controller.CurrencyControllerTest" />
-      <option name="METHOD_NAME" value="getWeatherForLastDays" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,6 +157,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WeatherIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.domain.WeatherIdTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="HW_PDRIS" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.application.Application" />
@@ -190,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WeatherIdTest" />
         <item itemvalue="JUnit.WeatherControllerTest" />
         <item itemvalue="JUnit.PredictCurrencyControllerTest.getWeatherForLastDays" />
         <item itemvalue="JUnit.PredictCurrencyControllerTest" />
         <item itemvalue="JUnit.CurrencyControllerTest" />
-        <item itemvalue="JUnit.CurrencyControllerTest.getWeatherForLastDays" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +201,7 @@
       <workItem from="1608140503792" duration="1157000" />
       <workItem from="1608141891901" duration="95000" />
       <workItem from="1608142548060" duration="2412000" />
-      <workItem from="1608148728185" duration="2073000" />
+      <workItem from="1608148728185" duration="2554000" />
     </task>
     <servers />
   </component>
@@ -238,22 +229,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="634" y="363" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895300325" />
-    <state width="1666" height="303" key="GridCell.Tab.0.bottom" timestamp="1608150731468">
+    <state width="1666" height="303" key="GridCell.Tab.0.bottom" timestamp="1608151038433">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
-    <state width="1666" height="303" key="GridCell.Tab.0.bottom/84.23.1708.1097@84.23.1708.1097" timestamp="1608150731468" />
-    <state width="1666" height="303" key="GridCell.Tab.0.center" timestamp="1608150731468">
+    <state width="1666" height="303" key="GridCell.Tab.0.bottom/84.23.1708.1097@84.23.1708.1097" timestamp="1608151038433" />
+    <state width="1666" height="303" key="GridCell.Tab.0.center" timestamp="1608151038432">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
-    <state width="1666" height="303" key="GridCell.Tab.0.center/84.23.1708.1097@84.23.1708.1097" timestamp="1608150731468" />
-    <state width="1666" height="303" key="GridCell.Tab.0.left" timestamp="1608150731468">
+    <state width="1666" height="303" key="GridCell.Tab.0.center/84.23.1708.1097@84.23.1708.1097" timestamp="1608151038432" />
+    <state width="1666" height="303" key="GridCell.Tab.0.left" timestamp="1608151038431">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
-    <state width="1666" height="303" key="GridCell.Tab.0.left/84.23.1708.1097@84.23.1708.1097" timestamp="1608150731468" />
-    <state width="1666" height="303" key="GridCell.Tab.0.right" timestamp="1608150731468">
+    <state width="1666" height="303" key="GridCell.Tab.0.left/84.23.1708.1097@84.23.1708.1097" timestamp="1608151038431" />
+    <state width="1666" height="303" key="GridCell.Tab.0.right" timestamp="1608151038432">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
-    <state width="1666" height="303" key="GridCell.Tab.0.right/84.23.1708.1097@84.23.1708.1097" timestamp="1608150731468" />
+    <state width="1666" height="303" key="GridCell.Tab.0.right/84.23.1708.1097@84.23.1708.1097" timestamp="1608151038432" />
     <state width="1666" height="374" key="GridCell.Tab.1.bottom" timestamp="1608150326072">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
@@ -270,11 +261,11 @@
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
     <state width="1666" height="374" key="GridCell.Tab.1.right/84.23.1708.1097@84.23.1708.1097" timestamp="1608150326071" />
-    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1608150755874">
+    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1608151307716">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
     <state x="639" y="373" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895307200" />
-    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog/84.23.1708.1097@84.23.1708.1097" timestamp="1608150755874" />
+    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog/84.23.1708.1097@84.23.1708.1097" timestamp="1608151307716" />
     <state x="603" y="268" width="670" height="676" key="search.everywhere.popup" timestamp="1608143015662">
       <screen x="84" y="23" width="1708" height="1097" />
     </state>
