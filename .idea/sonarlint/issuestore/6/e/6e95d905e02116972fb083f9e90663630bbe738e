@@ -1,0 +1,7 @@
+
+G
+java:S3416("1Update this logger to use "WeatherService.class".(µÏÍË
+U
+java:S1117M"@Rename "restTemplate" which hides the field declared at line 38.(— ’
+I
+java:S3252b"3Use static access with "java.util.Date" for "from".(ŽÕˆÌ

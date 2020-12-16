@@ -37,7 +37,7 @@ public class WeatherService {
     private final ObjectMapper mapper;
     private final RestTemplate restTemplate;
     private final WeatherRepository weatherRepository;
-    private final Logger logger = Logger.getLogger(Weather.class.getName());
+    private final Logger logger = Logger.getLogger(WeatherService.class.getName());
 
     @Autowired
     public WeatherService(WeatherRepository weatherRepository, ObjectMapper mapper,
@@ -74,7 +74,6 @@ public class WeatherService {
         if (weather.isPresent()) {
             return weather.get();
         }
-        RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(createUrlForInstantAndCity(date, city),
                 String.class);
         try {
@@ -107,9 +106,7 @@ public class WeatherService {
                 root.findValue(ResponseKeys.MINIMUM_TEMPERATURE).asDouble(),
                 root.findValue(ResponseKeys.AVERAGE_TEMPERATURE).asDouble(),
                 root.findValue(ResponseKeys.MAXIMUM_WIND_SPEED).asDouble(),
-                root.findValue(ResponseKeys.TOTAL_PRECIPITATE).asDouble(),
-                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble(),
-                root.findValue(ResponseKeys.AVERAGE_HUMIDITY).asDouble()
+                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble()
         );
         weatherRepository.save(weather);
         return weather;
@@ -126,9 +123,7 @@ public class WeatherService {
                 root.findValue(ResponseKeys.MINIMUM_TEMPERATURE).asDouble(),
                 root.findValue(ResponseKeys.AVERAGE_TEMPERATURE).asDouble(),
                 root.findValue(ResponseKeys.MAXIMUM_WIND_SPEED).asDouble(),
-                root.findValue(ResponseKeys.TOTAL_PRECIPITATE).asDouble(),
-                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble(),
-                root.findValue(ResponseKeys.AVERAGE_HUMIDITY).asDouble()
+                root.findValue(ResponseKeys.AVERAGE_VISIBILITY).asDouble()
         );
     }
 
@@ -139,9 +134,7 @@ public class WeatherService {
         private static final String MINIMUM_TEMPERATURE = "mintemp_c";
         private static final String AVERAGE_TEMPERATURE = "avgtemp_c";
         private static final String MAXIMUM_WIND_SPEED = "maxwind_kph";
-        private static final String TOTAL_PRECIPITATE = "totalprecip_mm";
         private static final String AVERAGE_VISIBILITY = "avgvis_km";
-        private static final String AVERAGE_HUMIDITY = "avghumidity";
         private static final String FORECAST = "forecastday";
     }
 }

@@ -23,9 +23,9 @@ public class CurrencyService {
     private final CurrencyRepository currencyRepository;
     private final RestTemplate restTemplate;
 
-    private final static String URL_FOR_CURRENCY_REQUEST = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
-    private final static String END_OF_RESPONSE_PATTERN = "</Value></Valute>";
-    private final static String CURRENCY_RESPONSE_START_PATTERN = "<Valute ID=\"R01235\">"
+    private static final String URL_FOR_CURRENCY_REQUEST = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
+    private static final String END_OF_RESPONSE_PATTERN = "</Value></Valute>";
+    private static final String CURRENCY_RESPONSE_START_PATTERN = "<Valute ID=\"R01235\">"
             + "<NumCode>840</NumCode>"
             + "<CharCode>USD</CharCode>"
             + "<Nominal>1</Nominal>"
@@ -70,7 +70,6 @@ public class CurrencyService {
 
     private double getCurrencyValueByResponse(ResponseEntity<String> response) {
         String body = response.getBody();
-        System.out.println(body);
         assert body != null;
         int valueStartIndex = body.indexOf(CURRENCY_RESPONSE_START_PATTERN) + CURRENCY_RESPONSE_START_PATTERN.length();
         body = body.substring(valueStartIndex);

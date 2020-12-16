@@ -12,11 +12,9 @@ public class WeatherTest {
     private final double minTemperature = 20.2;
     private final double avgTemperature = 22.7;
     private final double maxWind = 7.8;
-    private final double totalPrecipitation = 12.67;
     private final double avgVisibility = 213.12;
-    private final double avgHumidity = 5.8;
     private final Weather weather = new Weather(date, city, maxTemperature, minTemperature, avgTemperature,
-    maxWind, totalPrecipitation, avgVisibility, avgHumidity);
+            maxWind, avgVisibility);
 
     @Test
     public void getDate() {
@@ -49,17 +47,7 @@ public class WeatherTest {
     }
 
     @Test
-    public void getTotalPrecipitation() {
-        assertEquals(weather.getTotalPrecipitation(), totalPrecipitation, 0.01);
-    }
-
-    @Test
     public void getAvgVisibility() {
         assertEquals(weather.getAvgVisibility(), avgVisibility, 0.01);
-    }
-
-    @Test
-    public void getAvgHumidity() {
-        assertEquals(weather.getAvgHumidity(), avgHumidity, 0.01);
     }
 }

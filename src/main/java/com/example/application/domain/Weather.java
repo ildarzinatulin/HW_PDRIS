@@ -15,21 +15,17 @@ public class Weather {
     private double minTemperature;
     private double avgTemperature;
     private double maxWind;
-    private double totalPrecipitation;
     private double avgVisibility;
-    private double avgHumidity;
 
     public Weather(String date, String city, double maxTemperature, double minTemperature, double avgTemperature,
-            double maxWind, double totalPrecipitation, double avgVisibility, double avgHumidity) {
+            double maxWind, double avgVisibility) {
         this.date = date;
         this.city = city;
         this.maxTemperature = maxTemperature;
         this.minTemperature = minTemperature;
         this.avgTemperature = avgTemperature;
         this.maxWind = maxWind;
-        this.totalPrecipitation = totalPrecipitation;
         this.avgVisibility = avgVisibility;
-        this.avgHumidity = avgHumidity;
     }
 
     public Weather() {}
@@ -58,16 +54,8 @@ public class Weather {
         return maxWind;
     }
 
-    public double getTotalPrecipitation() {
-        return totalPrecipitation;
-    }
-
     public double getAvgVisibility() {
         return avgVisibility;
-    }
-
-    public double getAvgHumidity() {
-        return avgHumidity;
     }
 
     @Override
@@ -79,9 +67,7 @@ public class Weather {
                 ", minTemperature=" + minTemperature +
                 ", avgTemperature=" + avgTemperature +
                 ", maxWind=" + maxWind +
-                ", totalPrecipitation=" + totalPrecipitation +
                 ", avgVisibility=" + avgVisibility +
-                ", avgHumidity=" + avgHumidity +
                 '}';
     }
 }
