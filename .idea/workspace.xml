@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,7 +23,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af6b373c-d036-40b4-9607-8de86f5969e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/service/PredictCurrencyServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_16_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_3_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_3_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f433388e8557bfbc4756a198df8b97ff83552e7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e5699abab8ca78839f8d0a6495b4a3d3a829d72" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d86b07604c9abd8c2d55a0d9e6f1b9ccd8f1a983" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/domain/CurrencyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/domain/WeatherTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/service/CurrencyServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/application/service/WeatherServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/HW_PDRIS_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/HW_PDRIS_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/service/PredictCurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/service/PredictCurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/application/service/PredictCurrencyServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/application/service/PredictCurrencyServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +98,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -65,13 +113,100 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.application.domain" />
+      <recent name="com.example.application.service" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.WeatherTest">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CurrencyServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.service.CurrencyServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CurrencyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.domain.CurrencyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PredictCurrencyServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.service.PredictCurrencyServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PredictCurrencyServiceTest.testFit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.service.PredictCurrencyServiceTest" />
+      <option name="METHOD_NAME" value="testFit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WeatherTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW_PDRIS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.application.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.application.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.example.application.domain.WeatherTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -84,6 +219,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.WeatherTest" />
+        <item itemvalue="JUnit.CurrencyTest" />
+        <item itemvalue="JUnit.CurrencyServiceTest" />
+        <item itemvalue="JUnit.PredictCurrencyServiceTest" />
+        <item itemvalue="JUnit.PredictCurrencyServiceTest.testFit" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,7 +237,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607893341548</updated>
-      <workItem from="1607893342615" duration="480000" />
+      <workItem from="1607893342615" duration="747000" />
+      <workItem from="1608140503792" duration="1157000" />
+      <workItem from="1608141891901" duration="95000" />
+      <workItem from="1608142548060" duration="1780000" />
     </task>
     <servers />
   </component>
@@ -110,15 +257,58 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="634" y="363" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1607895217449">
+    <state x="634" y="363" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1607895300325">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="634" y="363" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895217449" />
-    <state x="639" y="373" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1607895222237">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="634" y="363" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895300325" />
+    <state width="1666" height="303" key="GridCell.Tab.0.bottom" timestamp="1608144202966">
+      <screen x="84" y="23" width="1708" height="1097" />
     </state>
-    <state x="639" y="373" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895222237" />
+    <state width="1666" height="303" key="GridCell.Tab.0.bottom/84.23.1708.1097@84.23.1708.1097" timestamp="1608144202966" />
+    <state width="1666" height="303" key="GridCell.Tab.0.center" timestamp="1608144202965">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.0.center/84.23.1708.1097@84.23.1708.1097" timestamp="1608144202965" />
+    <state width="1666" height="303" key="GridCell.Tab.0.left" timestamp="1608144202965">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.0.left/84.23.1708.1097@84.23.1708.1097" timestamp="1608144202965" />
+    <state width="1666" height="303" key="GridCell.Tab.0.right" timestamp="1608144202966">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.0.right/84.23.1708.1097@84.23.1708.1097" timestamp="1608144202966" />
+    <state width="1666" height="303" key="GridCell.Tab.1.bottom" timestamp="1608141845066">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.1.bottom/84.23.1708.1097@84.23.1708.1097" timestamp="1608141845066" />
+    <state width="1666" height="303" key="GridCell.Tab.1.center" timestamp="1608141845065">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.1.center/84.23.1708.1097@84.23.1708.1097" timestamp="1608141845065" />
+    <state width="1666" height="303" key="GridCell.Tab.1.left" timestamp="1608141845065">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.1.left/84.23.1708.1097@84.23.1708.1097" timestamp="1608141845065" />
+    <state width="1666" height="303" key="GridCell.Tab.1.right" timestamp="1608141845065">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state width="1666" height="303" key="GridCell.Tab.1.right/84.23.1708.1097@84.23.1708.1097" timestamp="1608141845065" />
+    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1608143718496">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state x="639" y="373" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1607895307200" />
+    <state x="757" y="336" key="com.intellij.testIntegration.createTest.CreateTestDialog/84.23.1708.1097@84.23.1708.1097" timestamp="1608143718496" />
+    <state x="603" y="268" width="670" height="676" key="search.everywhere.popup" timestamp="1608143015662">
+      <screen x="84" y="23" width="1708" height="1097" />
+    </state>
+    <state x="603" y="268" width="670" height="676" key="search.everywhere.popup/84.23.1708.1097@84.23.1708.1097" timestamp="1608143015662" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SpringHW2$PredictCurrencyServiceTest.ic" NAME="PredictCurrencyServiceTest Coverage Results" MODIFIED="1608142569500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.application.service.*</FILTER>
+    </SUITE>
   </component>
 </project>

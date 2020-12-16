@@ -1,0 +1,12 @@
+
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(’‘Χ8Φ“πε.
+T	java:S106I"9Replace this use of System.out or System.err by a logger.(Δλ8Φ“πε.
+O
+java:S32526"3Use static access with "java.util.Date" for "from".(Χμ78Φ“πε.
+U
+java:S3252S"3Use static access with "java.util.Date" for "from".(ψΊ΅ύÿÿÿÿ8Φ“πε.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¦ωΛ8Φ“πε.
+a
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ΰΔ‹E8Φ“πε.

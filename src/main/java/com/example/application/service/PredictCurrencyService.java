@@ -29,18 +29,8 @@ public class PredictCurrencyService {
     public void fit() {
         List<Weather> weathers = weatherService.getWeatherForLastDays(NUMBER_PREVIOUS_DAYS_FOR_FIT);
         List<Currency> currencies = currencyService.getDollarCurrencyForLastDays(NUMBER_PREVIOUS_DAYS_FOR_FIT);
-        fit(weathers, currencies);
-    }
-
-    public void fit(List<Weather> weathers, List<Currency> currencies) {
         IntStream.range(0, Math.min(currencies.size(), weathers.size()))
-                .forEach(i -> {
-                    regression.addData(weathers.get(i).getAvgTemperature(), currencies.get(i).getValue());
-                });
-    }
-
-    public double predict(Weather weather) {
-        return regression.predict(weather.getMaxTemperature());
+                .forEach(i -> regression.addData(weathers.get(i).getAvgTemperature(), currencies.get(i).getValue()));
     }
 
     public double predict() throws JsonProcessingException {
